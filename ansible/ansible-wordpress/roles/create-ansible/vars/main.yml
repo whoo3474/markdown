@@ -1,0 +1,4 @@
+---
+# vars file for create-ansible
+aws_a_key: access
+aws_s_key: secrete
