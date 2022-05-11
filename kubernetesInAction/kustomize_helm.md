@@ -1,6 +1,6 @@
-https://www.jacobbaek.com/1172
-
-https://wookiist.dev/159
+> 출처:
+>  https://www.jacobbaek.com/1172
+> https://wookiist.dev/159
 
 
 # Helm 과 Kustomize
@@ -9,6 +9,8 @@ https://wookiist.dev/159
 
 Kustomize 수동으로 하는 부분이 존재하지만,
 Helm은 이마저도 자동화 해놓았다.
+
+개발을 했다가 Devops로 전향을 해서 그런지, helm에서는 go template를 사용하여, if나 반복문, 변수설정등을 사용하는게 오히려 편하게 느껴졌다.
 
 
 애플리케이션을 동적으로 배포하려고 사용하는것.
