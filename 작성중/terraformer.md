@@ -1,4 +1,4 @@
-#terraformer
+## terraformer에 관하여
 
 terraformer는 기존의 인프라를 terraform으로 관리하기 위해서 
 terraform import를 사용 하고자 하였으나, state만 가져오기에,
@@ -15,8 +15,8 @@ Project Status (2021-12-11): No longer actively maintained
 https://github.com/GoogleCloudPlatform/terraformer
 
 이 주소로 들어가서 각자의 환경에 맞게 설치를 진행하면 되는데, 나는 맥북으로 진행하고 있기에,
-```
-brew install terraformer
+```shell
+$brew install terraformer
 ```
 brew로 설치를 진행하였다.
 
@@ -31,24 +31,30 @@ provider "aws" {
 
 명령어를 치면 알아서 provider를 설치해준다.
 ```shell
-terraform init
+$terraform init
 ```
 
 그 이후 내가 가져오고싶은 resource를 **,** 표시로 구분하여 명령어를 입력하면,
 generated폴더가 생기고, 그 내부에 폴더별로 깔끔하게 가져와진다.
 
-```
-terraformer import aws --resources=subnet,vpc,s3 --regions=<REGION> --profile=<PROFILE>
+```shell
+$terraformer import aws --resources=subnet,vpc,s3 --regions=<REGION> --profile=<PROFILE>
 ```
 상단의 명령어는, subnet,vpc,s3를 가져온다.
 
 상세하게 태그를 구분해서 가져오고 싶을때는
 
-```
-terraformer import aws --resources=s3 --filter="Name=tags.Abc" --regions=eu-west-1
+```shell
+$terraformer import aws --resources=s3 --filter="Name=tags.Abc" --regions=ap-northeast-2
 ```
 
 이렇게 입력하면 tag가 Abc인 s3리소스를 가져온다.
+
+```shell
+$terraformer import aws --resources=* --excludes="dynamodb"
+```
+와일드 카드로 모든 리소스를 가져올수도 있다.
+또한 excludes 옵션으로 안가져올수도 있다.
 
 
 혹시, 리소스가 잘 안받아지는데? 내가 가진 리소스를 지원하는건지 모르겠다 싶을때는
@@ -56,3 +62,5 @@ terraformer import aws --resources=s3 --filter="Name=tags.Abc" --regions=eu-west
 >https://github.com/GoogleCloudPlatform/terraformer/tree/master/docs
 
 여기서 본인의 환경에 맞는 파일을 선택해서 찾아보면된다.
+
+-----------------------------------
